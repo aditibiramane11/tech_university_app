@@ -1,0 +1,19 @@
+<h1>Course Listing</h1>
+ <div class="row">
+   <% @courses.each do |course|%>
+       <div class="col s6 m6">
+         <div class="card blue-grey darken-1">
+           <div class="card-content white-text">
+             <span class="card-title"><%= course.short_name%>:<%= course.name%></span>
+             <p><%= course.description %></p>
+           </div>
+           <div class="card-action">
+           <% if logged_in? && !(current_user.courses.include?(course)) %> 
+              <%= button_to "Enroll", course_enroll_path(course_id: course.id), method: :post, class: "btn btn-outline-info" %>
+            <% end %> 
+           </div>
+         </div>
+       </div>
+      <% end %> 
+  </div>
+

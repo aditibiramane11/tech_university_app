@@ -1,0 +1,24 @@
+<header>
+        <nav>
+          <div class="container">
+              <div class="nav-wrapper">
+                <%= link_to 'Tech University', root_path, class:"brand-logo right" %>
+                 <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul id="nav-mobile" class="left hide-on-med-and-down">
+                  <li><%= link_to 'Courses', root_path %></li>
+                  <% if logged_in?%>
+                        <li><%= link_to 'Students', students_path %></li>
+                  <% end %> 
+                  <% if logged_in?%>
+                        <li><%= link_to 'Profile', student_path(current_user) %></li>
+                  <% end %> 
+                  <% if logged_in?%>
+                         <li><%= button_to "log out", logout_path, method: :delete , class: "btn btn-outline-danger"%></li>
+                  <%else%>
+                        <li><%= link_to "login", login_path, class: "btn btn-outline-sucess"%></li>
+                        <%= link_to 'Sign Up',new_student_path, class: "btn btn-outline-info" %> 
+                  <% end %>   
+              </div>
+          </div>
+        </nav>
+    </header>
